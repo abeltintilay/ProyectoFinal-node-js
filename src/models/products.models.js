@@ -33,7 +33,6 @@ export function obtenerProducto(id) {
 
 // obtenerProducto()
 
-
 export function obtenerProductos() {
   return(
     new Promise(async(res, rej)=>{
@@ -78,12 +77,7 @@ export function agregarProducto(producto) {
     })
   )
 }
-
-
-  
-
-// agregarProducto({nombre: "yerba", categoria: "infusion", precio: 11222})
-
+ 
 /*
 
 export async function actualizarProducto(id, producto) {
@@ -114,31 +108,31 @@ export async function actualizarProducto(id, producto) {
     }
   });
 }
-
-
 */
-// actualizarProducto({id: "OlFUYq6AEmVMPxhDiT72", precio: 56789102222223})
 
-export function eliminarProducto(id) {
+export async function eliminarProducto(id) {
+  return new Promise(async (res, rej) => {
+    try {
 
-    return (
-      new Promise( async(res,rej)=>{
-          try {
-            await deleteDoc(doc(db, "products", id));
-            console.log("PRODUCTO ELIMINADO")
-            res()
-          }catch(error){
-            console.log(error)
-            rej(error)
-          }
+      const ref = doc(db, "products", id);
 
-      })
-    )
+      // Verificar si existe el documento
+      const snap = await getDoc(ref);
+
+      if (!snap.exists()) {
+        console.log("ID inválido o producto inexistente");
+        return rej(new Error("El producto no existe o el ID es inválido"));
+      }
+
+      // Eliminar
+      await deleteDoc(ref);
+      console.log("PRODUCTO ELIMINADO");
+
+      res();
+      
+    } catch (error) {
+      console.log(error);
+      rej(error);
+    }
+  });
 }
-
-// eliminarProducto("OlFUYq6AEmVMPxhDiT72")
-// ahora ver el tema de envolver cada funcion dentro de una proemesa, mas que nada
-// para poder manejar los errores del servidor
-// por que sino, se puede romper
-// recuerda que estas funciones estan sueltas y funcionan por si solas
-// pero integradas en las capas, debemos capturar todos los errores posibles
