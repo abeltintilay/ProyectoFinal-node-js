@@ -78,7 +78,7 @@ export function agregarProducto(producto) {
   )
 }
  
-/*
+/*********************** */
 
 export async function actualizarProducto(id, producto) {
   return new Promise(async (res, rej) => {
@@ -108,7 +108,7 @@ export async function actualizarProducto(id, producto) {
     }
   });
 }
-*/
+
 
 export async function eliminarProducto(id) {
   return new Promise(async (res, rej) => {

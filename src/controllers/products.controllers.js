@@ -24,7 +24,7 @@ export const deleteProduct = async (req,res)=>{
     }
 }
 
-/*
+/*********** */
 export const editProduct = async (req,res)=>{
     try{
         const id = req.params.id;
@@ -42,7 +42,7 @@ export const editProduct = async (req,res)=>{
     }
 }
 
-*/
+//************************** */
 export const getAllProducts = async (req, res) => {
     try{
         console.log("Paso 1")

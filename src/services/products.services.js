@@ -1,5 +1,5 @@
 
-import { agregarProducto , eliminarProducto, obtenerProducto, obtenerProductos, /* actualizarProducto */ } from "../models/products.models.js";
+import { agregarProducto , eliminarProducto, obtenerProducto, obtenerProductos,  actualizarProducto  } from "../models/products.models.js";
 
 
 export const addProductService = async (product)=>{
@@ -28,7 +28,7 @@ export const deleteProductService = async (id)=>{
   )
 }
 
-/*      ***********
+//      ***********
 export const editProductService = async (id,product)=>{
    return (
     new Promise (async (res,rej)=>{
@@ -41,7 +41,7 @@ export const editProductService = async (id,product)=>{
     })
    )
 }
-*/
+
 
 export const getAllProductsService = async () => {
   return(
